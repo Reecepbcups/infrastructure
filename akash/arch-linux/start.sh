@@ -6,7 +6,7 @@ source $HOME/.bash_profile
 timedatectl set-timezone America/Chicago
 
 # Install
-pacman --noconfirm -Syyu openssh sudo go git wget curl nginx base-devel
+pacman --noconfirm -Syyu openssh sudo go git wget curl nginx base-devel inetutils
 
 # non core installs
 pacman --noconfirm -Syyu python-pip zip unzip lsof jq dos2unix btop nano cron cronie neofetch
