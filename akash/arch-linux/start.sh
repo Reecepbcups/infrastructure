@@ -9,11 +9,7 @@ timedatectl set-timezone America/Chicago
 pacman --noconfirm -Syyu openssh sudo go git wget curl nginx base-devel
 
 # non core installs
-pacman --noconfirm -Syyu python-pip zip unzip lsof jq dos2unix btop nano
-
-# Crontab
-# pacman --noconfirm -Syyu cron
-# systemctl enable cronie && systemctl start cronie
+pacman --noconfirm -Syyu python-pip zip unzip lsof jq dos2unix btop nano cron cronie
 
 # Performance Increase
 echo "65535" > /proc/sys/fs/file-max
@@ -34,5 +30,6 @@ sed -i -e 's/^UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config # not tested yet
 # start ssh in the background on port 22
 /usr/sbin/sshd -p 22 -f /etc/ssh/sshd_config
 /usr/bin/nginx -g 'pid /run/nginx.pid; error_log stderr;'
+/usr/sbin/crond -i
 
 mkdir -p /root/storage/
