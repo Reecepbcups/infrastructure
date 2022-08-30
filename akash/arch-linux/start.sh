@@ -26,6 +26,8 @@ echo "* soft nofile 150000" >> /etc/security/limits.conf
 
 sudo touch /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
+# fix sshd
+sed -i -e 's/^UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config # not tested yet
 (echo ${my_root_password}; echo ${my_root_password}) | passwd root
 # systemctl restart sshd
 # systemctl start nginx
