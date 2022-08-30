@@ -33,3 +33,4 @@ service sshd restart
 service nginx start
 # runsvdir -P /etc/service &
 
+mkdir -p /root/storage/
