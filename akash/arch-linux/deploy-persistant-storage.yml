@@ -18,7 +18,7 @@ services:
       - "-c"
       
     args:
-      - 'pacman --noconfirm -Syyu go git wget curl ; wget --quiet -O - https://raw.githubusercontent.com/Reecepbcups/infrastructure/main/akash/arch-linux/start.sh | bash ; sleep infinity'   
+      - 'pacman --noconfirm -Syyu go git wget curl ; curl -s https://raw.githubusercontent.com/Reecepbcups/infrastructure/main/akash/arch-linux/start.sh | bash ; sleep infinity'   
     
     expose:
       - port: 80

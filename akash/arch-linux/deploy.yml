@@ -13,7 +13,7 @@ services:
       - "-c"
       
     args:
-      - 'pacman --noconfirm -Syyu go git wget curl ; wget --quiet -O - https://raw.githubusercontent.com/Reecepbcups/infrastructure/main/akash/arch-linux/start.sh | bash ; sleep infinity'   
+      - 'pacman --noconfirm -Syyu go git wget curl ; curl -s https://raw.githubusercontent.com/Reecepbcups/infrastructure/main/akash/arch-linux/start.sh | bash ; sleep infinity'
     
     expose:
       - port: 80
@@ -30,9 +30,9 @@ profiles:
     app:
       resources:
         cpu:
-          units: 8
+          units: 2
         memory:
-          size: 16Gi
+          size: 8Gi
         storage:
           size: 200Gi
          
