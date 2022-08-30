@@ -14,8 +14,8 @@ services:
       - "my_root_password=12345678" # root password for ssh connection.
     
     command:
-      - "/sbin/init"
-      # - "-c"
+      - "bash"
+      - "-c"
       
     args:
       - 'pacman --noconfirm -Syyu go git wget curl ; curl -s https://raw.githubusercontent.com/Reecepbcups/infrastructure/main/akash/arch-linux/start.sh | bash ; sleep infinity'   

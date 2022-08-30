@@ -23,16 +23,16 @@ echo "root soft nofile 150000" >> /etc/security/limits.conf
 echo "* hard nofile  150000" >> /etc/security/limits.conf
 echo "* soft nofile 150000" >> /etc/security/limits.conf
 
+(echo ${my_root_password}; echo ${my_root_password}) | passwd root
 
+ssh-keygen -A
 sudo touch /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-# fix sshd
 sed -i -e 's/^UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config # not tested yet
-(echo ${my_root_password}; echo ${my_root_password}) | passwd root
-# systemctl restart sshd
-# systemctl start nginx
-service sshd restart
-service nginx start
-# runsvdir -P /etc/service &
+
+# you have to start directly from the files, you cant systemctl / service
+# start ssh in the background on port 22
+/usr/sbin/sshd -p 22 -f /etc/ssh/sshd_config
+/usr/bin/nginx -g 'pid /run/nginx.pid; error_log stderr;'
 
 mkdir -p /root/storage/
