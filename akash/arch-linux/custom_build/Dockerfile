@@ -6,13 +6,11 @@ COPY container.target /etc/systemd/system/container.target
  
 RUN ln -sf /etc/systemd/system/container.target /etc/systemd/system/default.target
  
-ENTRYPOINT ["/sbin/init"]
+RUN pacman -Sy --noconfirm systemd
+
 CMD ["--log-level=info"]
-
-# mount to the host /sys/fs/cgroup
-ADD . /sys/fs/cgroup
-ADD . /sys/fs/fuse
-# ADD tmpfs /run/lock
-
- 
 STOPSIGNAL SIGRTMIN+3
+
+ENTRYPOINT ["/usr/lib/systemd/systemd"]
+
+
