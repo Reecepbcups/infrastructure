@@ -35,7 +35,7 @@ else
     echo "my_ssh_pub_key was set, adding key to authorized_keys"
     mkdir -p /root/.ssh
     touch /root/.ssh/authorized_keys
-    echo -e "${my_ssh_pub_key}\n" >> /root/.ssh/authorized_keys
+    echo -e "${my_ssh_pub_key}" >> /root/.ssh/authorized_keys
 fi
 
 # Gernerate SSH keys & setup sshd
