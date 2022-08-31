@@ -7,6 +7,7 @@ services:
     
     env:
       - "my_root_password=12345678" # root password for ssh connection.
+      - "container=docker"
     
     command:
       - "bash"

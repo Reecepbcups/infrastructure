@@ -35,3 +35,4 @@ sed -i -e 's/^UsePAM yes/UsePAM no/g' /etc/ssh/sshd_config
 
 # makes the directory we put persistant storage on, /root/storage
 mkdir -p /root/storage/
+echo "BASIC ARCH INSTALL COMPLETE, YOU CAN NOW SSH IN."
