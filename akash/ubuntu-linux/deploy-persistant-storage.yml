@@ -11,7 +11,9 @@ services:
           mount: /root/storage/
 
     env:
-      - "my_root_password=1298aaa" # root password for ssh connection.
+      - "my_root_password=1298aaa" # Change this once you log in via SSH
+      - "my_ssh_pub_key=ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBoXodHswNL883mwbH/getnK+vwj//wrn+KZ7om29IRE reecepbcups@gmail.com"
+      - "container=docker"
     
     command:
       - "bash"

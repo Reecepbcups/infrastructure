@@ -13,3 +13,10 @@ For best security, you should:
 - disable PermitRootLogin in /etc/ssh/sshd_config
 - create a user with their own home directory.
 ```
+
+
+### Notes:
+```
+Nginx -> /usr/share/nginx/html/index.html
+You can't use systemd [yet, still trying toi figure out], either screen or run daemon directly in background.
+```

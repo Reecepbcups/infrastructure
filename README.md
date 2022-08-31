@@ -4,8 +4,23 @@ Random bits of Infrastructure/System admin configs for Linux.
 I use arch btw.
 
 
-### TODO:
-akash arch-linux:
+### Akash:
 ```
-- add SSH key support via deploy
+- arch-linux deploy & setup (password &/or ssh key)
+[No systemd support yet, working on.]
+
+- ubuntu-linux
+[systemd support]
+```
+
+
+### Minecraft
+```
+- minecraft-panel repo
+```
+
+
+### Nginx
+```
+- load balancing config
 ```

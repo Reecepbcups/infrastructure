@@ -9,8 +9,26 @@ apt-get install -y sudo nano wget tar zip unzip jq goxkcdpwgen ssh nginx build-e
 sudo apt-get install -y nano runit
 
 # Allow the root user to SSH in & change password to what we want from the config
+ssh-keygen -A
+sudo touch /etc/ssh/sshd_config
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
-(echo ${my_root_password}; echo ${my_root_password}) | passwd root
+
+if [ -z ${my_root_password+x} ]; then
+    echo "my_root_password was not set, so you need to use ssh keys"
+else
+    echo "my_root_password was set"
+    (echo ${my_root_password}; echo ${my_root_password}) | passwd root
+fi
+
+# check if the variable my_ssh_pub_key was set
+if [ -z ${my_ssh_pub_key+x} ]; then
+    echo "my_ssh_pub_key was not set"
+else
+    echo "my_ssh_pub_key was set, adding key to authorized_keys"
+    mkdir -p /root/.ssh
+    touch /root/.ssh/authorized_keys
+    echo -e "${my_ssh_pub_key}\n" >> /root/.ssh/authorized_keys
+fi
 
 # restart the service for ssh & nginx
 service ssh restart

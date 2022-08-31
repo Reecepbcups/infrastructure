@@ -4,18 +4,15 @@ version: "2.0"
 services:
   app:
     image: archlinux:latest
-    
-    env:
-      - "my_root_password=12345678" # root password for ssh connection.
+    env:      
+      - "my_root_password=12345678" # Change this once you log in via SSH
+      - "my_ssh_pub_key=ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBoXodHswNL883mwbH/getnK+vwj//wrn+KZ7om29IRE reecepbcups@gmail.com"
       - "container=docker"
-    
     command:
       - "bash"
       - "-c"
-      
     args:
       - 'pacman --noconfirm -Syyu go git wget curl ; curl -s https://raw.githubusercontent.com/Reecepbcups/infrastructure/main/akash/arch-linux/start.sh | bash ; sleep infinity'
-    
     expose:
       - port: 80
         as: 80
@@ -29,7 +26,6 @@ services:
         as: 22
         to:
           - global: true
-           
 profiles:
   compute:
     app:
@@ -37,14 +33,13 @@ profiles:
         cpu:
           units: 2
         memory:
-          size: 8Gi
+          size: 4Gi
         storage:
-          size: 200Gi
-         
+          size: 100Gi         
   placement:
     akash: 
       attributes:
-            
+
       pricing:
         app:
           denom: uakt
