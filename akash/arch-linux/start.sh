@@ -9,7 +9,7 @@ timedatectl set-timezone America/Chicago
 pacman --noconfirm -Syyu openssh sudo go git wget curl nginx base-devel inetutils
 
 # non core installs
-pacman --noconfirm -Syyu python-pip zip unzip lsof jq dos2unix btop nano cronie neofetch
+pacman --noconfirm -Syyu python-pip zip unzip lsof jq dos2unix btop nano cronie neofetch screen
 
 # File increase limits
 echo "65535" > /proc/sys/fs/file-max
