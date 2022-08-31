@@ -20,7 +20,23 @@ echo "* hard nofile  150000" >> /etc/security/limits.conf
 echo "* soft nofile 150000" >> /etc/security/limits.conf
 
 # Change password
-(echo ${my_root_password}; echo ${my_root_password}) | passwd root
+
+if [ -z ${my_root_password+x} ]; then
+    echo "my_root_password was not set, so you need to use ssh keys"
+else
+    echo "my_root_password was set"
+    (echo ${my_root_password}; echo ${my_root_password}) | passwd root
+fi
+
+# check if the variable my_ssh_pub_key was set
+if [ -z ${my_ssh_pub_key+x} ]; then
+    echo "my_ssh_pub_key was not set"
+else
+    echo "my_ssh_pub_key was set, adding key to authorized_keys"
+    mkdir -p /root/.ssh
+    touch /root/.ssh/authorized_keys
+    echo -e "${my_ssh_pub_key}\n" >> /root/.ssh/authorized_keys
+fi
 
 # Gernerate SSH keys & setup sshd
 ssh-keygen -A
