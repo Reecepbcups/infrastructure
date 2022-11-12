@@ -1,0 +1,7 @@
+{
+    "weights": "2stake,2uosmo",
+    "initial-deposit": "100stake,100uosmo", 
+    "swap-fee": "0.01", 
+    "exit-fee": "0.01", 
+    "future-governor": "168h"
+}

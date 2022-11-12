@@ -1,0 +1,99 @@
+
+[global]
+log_level = 'debug'
+
+[mode]
+
+[mode.clients]
+enabled = true
+refresh = true
+misbehaviour = true
+
+
+[mode.connections]
+enabled = false
+
+
+[mode.channels]
+enabled = false
+
+
+[mode.packets]
+enabled = true
+clear_interval = 100
+clear_on_start = true
+tx_confirmation = false
+
+
+[rest]
+enabled = false
+host = '127.0.0.1'
+port = 3000
+
+[telemetry]
+enabled = false
+host = '127.0.0.1'
+port = 3001
+
+
+
+[[chains]]
+id = 'provider'
+rpc_addr = 'http://localhost:26657'
+grpc_addr = 'http://localhost:9090'
+websocket_addr = 'ws://localhost:26657/websocket'
+rpc_timeout = '10s'
+account_prefix = 'cosmos'
+key_name = 'relayer0'
+store_prefix = 'ibc'
+max_gas = 2000000
+gas_price = { price = 0, denom = 'uprov' }
+gas_multiplier = 1.1
+max_msg_num = 20
+clock_drift = '30s'
+trusting_period = '64h'
+trust_threshold = { numerator = '1', denominator = '3' }
+memo_prefix = 'Relayed by Notional Labs'
+
+[[chains]]
+id = 'apollo'
+rpc_addr = 'http://127.0.0.1:26667'
+grpc_addr = 'http://127.0.0.1:9190'
+websocket_addr = 'ws://127.0.0.1:26667/websocket'
+rpc_timeout = '10s'
+account_prefix = 'cosmos'
+key_name = 'relayer1'
+address_type = { derivation = 'cosmos' }
+store_prefix = 'ibc'
+default_gas = 100000
+max_gas = 40000000
+gas_price = { price = 0.1, denom = 'upol' }
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 2097152
+clock_drift = '30s'
+max_block_time = '30s'
+trusting_period = '14days'
+trust_threshold = { numerator = '1', denominator = '3' }
+memo_prefix = 'Notional Labs'
+
+[[chains]]
+id = 'sputnik'
+rpc_addr = 'http://127.0.0.1:26677'
+grpc_addr = 'http://127.0.0.1:9290'
+websocket_addr = 'ws://127.0.0.1:26677/websocket'
+rpc_timeout = '10s'
+account_prefix = 'cosmos'
+key_name = 'relayer2'
+store_prefix = 'ibc'
+default_gas = 100000
+max_gas = 40000000
+gas_price = { price = 0.1, denom = 'unik' }
+gas_multiplier = 1.1
+max_msg_num = 30
+max_tx_size = 2097152
+clock_drift = '30s'
+max_block_time = '30s'
+trusting_period = '14days'
+trust_threshold = { numerator = '1', denominator = '3' }
+address_type = { derivation = 'cosmos' }
