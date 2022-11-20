@@ -1,0 +1,1 @@
+docker run -p 80:80 -v /root/website/nginx.conf:/etc/nginx/nginx.conf:ro -d nginx
